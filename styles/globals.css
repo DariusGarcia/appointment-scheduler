@@ -37,6 +37,8 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --primary-bg: #f3f4f6;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -78,13 +80,12 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background-color: var(--primary-bg);
 }
 
 a {
