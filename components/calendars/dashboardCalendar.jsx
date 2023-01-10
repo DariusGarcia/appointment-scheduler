@@ -65,7 +65,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function DashboardCalendar() {
+export default function Example() {
   return (
     <div className='md:grid md:grid-cols-2 md:divide-x md:divide-gray-200'>
       <div className='md:pr-14'>

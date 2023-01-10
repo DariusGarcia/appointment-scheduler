@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
@@ -22,6 +23,7 @@ import {
 
 import Navbar from '../components/navbar'
 import DashboardCalendar from '../components/calendars/DashboardCalendar'
+import Footer from '../components/footer'
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -83,7 +85,9 @@ export default function Dashboard() {
                     </div>
                   </Transition.Child>
                   <div className='flex flex-shrink-0 items-center px-4'>
-                    <img
+                    <Image
+                      width={300}
+                      height={300}
                       className='h-8 w-auto'
                       src='https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300'
                       alt='Easywire logo'
@@ -495,14 +499,17 @@ export default function Dashboard() {
                         </div>
                       </nav>
                     </div>
-                    <DashboardCalendar />
                   </div>
                 </div>
               </div>
             </div>
+            <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+              <DashboardCalendar />
+            </div>
           </main>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
@@ -512,25 +519,55 @@ function classNames(...classes) {
 }
 
 const navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: true },
-  { name: 'History', href: '#', icon: ClockIcon, current: false },
-  { name: 'Balances', href: '#', icon: ScaleIcon, current: false },
-  { name: 'Cards', href: '#', icon: CreditCardIcon, current: false },
-  { name: 'Recipients', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Reports', href: '#', icon: DocumentChartBarIcon, current: false },
+  { name: 'Home', href: '/', icon: HomeIcon, current: false },
+  { name: 'Dashboard', href: '/dashboard', icon: ClockIcon, current: true },
+  {
+    name: 'Appointments',
+    href: '/appointments',
+    icon: ScaleIcon,
+    current: false,
+  },
+  { name: 'Profile', href: '/profile', icon: CreditCardIcon, current: false },
+  {
+    name: 'Contact',
+    href: '/contact',
+    icon: DocumentChartBarIcon,
+    current: false,
+  },
 ]
 const secondaryNavigation = [
-  { name: 'Settings', href: '#', icon: CogIcon },
-  { name: 'Help', href: '#', icon: QuestionMarkCircleIcon },
+  { name: 'Settings', href: '/settings', icon: CogIcon },
+  { name: 'Help', href: '/faq', icon: QuestionMarkCircleIcon },
   { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
 ]
 const cards = [
+  {
+    name: 'Upcoming lessons',
+    href: '#',
+    icon: ScaleIcon,
+    amount: '$30,659.45',
+  },
+  {
+    name: 'Schedule a lesson',
+    href: '#',
+    icon: ScaleIcon,
+    amount: '$30,659.45',
+  },
   { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
-  // More items...
 ]
 const transactions = [
   {
     id: 1,
+    name: 'Payment to Molly Sanders',
+    href: '#',
+    amount: '$20,000',
+    currency: 'USD',
+    status: 'success',
+    date: 'July 11, 2020',
+    datetime: '2020-07-11',
+  },
+  {
+    id: 2,
     name: 'Payment to Molly Sanders',
     href: '#',
     amount: '$20,000',
